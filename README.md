@@ -2,6 +2,8 @@
 
 ブラウザ単体・オフラインで完結して動作する、イベント出店・小規模店舗・同人即売会向けの高性能・軽量Web POSレジシステムです。PWA（Progressive Web Apps）に対応しており、PC、タブレット、スマートフォンへインストールしてネイティブアプリのように利用可能です。
 
+🌐 **[今すぐWebアプリを開く（GitHub Pages）](https://mr-p4754.github.io/browser-pos-register/)**
+
 ---
 
 ## 🌟 主な機能と特徴
