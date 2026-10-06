@@ -269,18 +269,6 @@ section[id^="screen-"].hidden {
     max-width: 80mm !important;
     border: 2px dashed #333 !important;
   }
-  /* レシート印刷 */
-  body.print-receipt #printable-receipt,
-  body.print-receipt #printable-receipt * {
-    visibility: visible;
-  }
-  body.print-receipt #printable-receipt {
-    position: absolute;
-    left: 50%;
-    top: 0;
-    transform: translateX(-50%);
-    width: 76mm !important;
-  }
 
   /* 商品貼付ラベルシート印刷（A4ラベルシール用紙最適化） */
   body.print-labels #label-sheet-print-container,

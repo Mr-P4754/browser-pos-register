@@ -984,7 +984,7 @@ function renderRegisterGrid() {
 
   container.innerHTML = '';
 
-  // 【要望②対応】手入力商品クイック追加カードをグリッドの先頭に常設
+  // 手入力商品クイック追加カードをグリッドの先頭に常設
   const customCard = document.createElement('div');
   customCard.className = 'pos-card p-3 flex flex-col justify-between border-2 border-dashed border-amber-300 hover:border-amber-500 bg-amber-50/70 hover:bg-amber-100/80 transition-all cursor-pointer shadow-sm';
   customCard.onclick = () => openCustomProductModal();
@@ -1040,7 +1040,7 @@ function renderRegisterGrid() {
 }
 
 // =========================================================
-// 手入力・その他商品モーダル制御（【要望②対応】）
+// 手入力・その他商品モーダル制御
 // =========================================================
 
 function openCustomProductModal() {
@@ -1128,7 +1128,7 @@ function handleSaveCustomProduct(event) {
 }
 
 // =========================================================
-// 割引・値引きモーダル制御（【要望③対応】）
+// 割引・値引きモーダル制御
 // =========================================================
 
 function openDiscountModal() {
@@ -1479,18 +1479,6 @@ function inputNumpadBackspace() {
   if (numpadBuffer.length > 0) {
     numpadBuffer = numpadBuffer.slice(0, -1);
     paymentInserted = parseInt(numpadBuffer, 10) || 0;
-    updatePaymentUI();
-  }
-}
-
-function addQuickMoney(amount) {
-  if (DENOMINATIONS.includes(amount)) {
-    adjustMoneyCount(amount, 1);
-  } else {
-    Sound.coin();
-    paymentInserted += amount;
-    numpadBuffer = paymentInserted.toString();
-    resetMoneyCounts(false);
     updatePaymentUI();
   }
 }
@@ -1969,7 +1957,7 @@ function processMergeFiles(fileList) {
 }
 
 // =========================================================
-// 売上QRコード表示モーダル制御（【要望⑤対応】）
+// 売上QRコード表示モーダル制御
 // =========================================================
 
 function openSalesQrModal() {
@@ -2347,11 +2335,6 @@ function handleDirectStockChange(productId, val) {
   showAlert('在庫数更新', `「${prod.name}」の在庫数を ${newStock}点 に更新しました。`, '📦');
 }
 
-// 既存互換用
-function restockProduct(productId, amount) {
-  adjustProductStock(productId, amount);
-}
-
 function restockAllProducts(amount) {
   Sound.click();
   storeData.products.forEach(p => {
@@ -2451,7 +2434,7 @@ function printSingleCard(productId) {
 }
 
 // =========================================================
-// 商品貼付ラベルシート印刷制御（【要望②対応】）
+// 商品貼付ラベルシート印刷制御
 // =========================================================
 
 let currentLabelConfig = {

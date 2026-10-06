@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja" class="h-full overflow-hidden" style="height: 100%; height: 100dvh; overflow: hidden;">
+<html lang="ja" class="h-full overflow-hidden">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -30,24 +30,10 @@
   <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
 
   <!-- カスタムスタイル -->
-  <link rel="stylesheet" href="style.css?v=20">
-  <style>
-    html, body {
-      height: 100% !important;
-      height: 100dvh !important;
-      max-height: 100dvh !important;
-      margin: 0 !important;
-      padding: 0 !important;
-      overflow: hidden !important;
-    }
-    /* 他タブ切替時の全画面表示を強制担保（画面セクションのみに限定） */
-    [id^="screen-"].hidden, section[id^="screen-"].hidden {
-      display: none !important;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css?v=21">
 </head>
 
-<body class="bg-slate-100 text-slate-800 h-full h-screen h-[100dvh] max-h-screen max-h-[100dvh] overflow-hidden flex flex-col m-0 p-0">
+<body class="bg-slate-100 text-slate-800 h-full flex flex-col overflow-hidden select-none">
   <!-- ヘッダー（すっきりとした実用ダークスレート） -->
   <header class="bg-slate-900 border-b border-slate-800 shadow-md shrink-0 px-3 sm:px-6 py-2 z-30">
     <div class="max-w-7xl mx-auto flex items-center justify-between gap-2">
@@ -823,7 +809,7 @@
           </div>
         </div>
 
-        <!-- 金種別ステッパー＆枚数照合入力（【要望①対応】） -->
+        <!-- 金種別ステッパー＆枚数照合入力 -->
         <div class="bg-slate-50 p-2.5 sm:p-3 rounded-xl border border-slate-200 space-y-2">
           <div class="flex items-center justify-between">
             <span class="text-xs font-bold text-slate-700 flex items-center gap-1.5">
@@ -987,7 +973,7 @@
     </div>
   </div>
 
-  <!-- 4. 巨大おつり表示モーダル（【要件3修正】3秒消滅を廃止しタップ消滅に特化） -->
+  <!-- 4. 巨大おつり表示モーダル（タップ・Enter消滅式） -->
   <div id="change-popup-modal" onclick="dismissChangePopup()" class="fixed inset-0 bg-slate-950/85 backdrop-blur-md z-50 hidden flex flex-col items-center justify-center p-4 cursor-pointer select-none">
     <div class="pos-card p-6 sm:p-10 max-w-lg w-full text-center shadow-2xl border-2 border-emerald-500 popup-zoom-in" onclick="event.stopPropagation(); dismissChangePopup();">
       <div class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold tracking-wide text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full uppercase mb-2">
@@ -1432,7 +1418,7 @@
   </div>
   <div id="qr-reader-file-temp" class="hidden"></div>
 
-  <!-- 11. 商品貼付ラベルシート印刷モーダル（【要望②対応】） -->
+  <!-- 11. 商品貼付ラベルシート印刷モーダル -->
   <div id="product-label-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-3 sm:p-4">
     <div class="pos-card max-w-lg w-full p-5 sm:p-6 shadow-2xl space-y-4 max-h-[92vh] overflow-y-auto custom-scrollbar">
       <div class="flex justify-between items-center border-b border-slate-200 pb-2.5">
@@ -1537,6 +1523,6 @@
   <div id="label-sheet-print-container" class="hidden"></div>
 
   <!-- アプリロジック -->
-  <script src="app.js?v=20"></script>
+  <script src="app.js?v=21"></script>
 </body>
 </html>
