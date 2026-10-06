@@ -3,7 +3,7 @@
  * 完全オフライン動作対応 PWA サービスワーカー
  */
 
-const CACHE_NAME = 'practical-pos-cache-v1';
+const CACHE_NAME = 'practical-pos-cache-v2';
 
 // オフライン起動時に必要なプリキャッシュアセット一覧
 const PRECACHE_ASSETS = [

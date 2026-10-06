@@ -30,7 +30,7 @@
   <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
 
   <!-- カスタムスタイル -->
-  <link rel="stylesheet" href="style.css?v=18">
+  <link rel="stylesheet" href="style.css?v=19">
   <style>
     html, body {
       height: 100% !important;
@@ -1038,38 +1038,116 @@
   </div>
 
   <!-- 6. 操作ガイドモーダル -->
-  <div id="help-modal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-    <div class="pos-card p-5 max-w-md w-full shadow-2xl space-y-3.5 max-h-[90vh] overflow-y-auto">
-      <div class="flex justify-between items-center border-b border-slate-200 pb-2">
-        <h3 class="text-base sm:text-lg font-black text-slate-900 flex items-center gap-1.5">
+  <div id="help-modal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-3 sm:p-4">
+    <div class="pos-card p-5 sm:p-6 max-w-xl w-full shadow-2xl space-y-4 max-h-[90vh] overflow-y-auto custom-scrollbar">
+      <div class="flex justify-between items-center border-b border-slate-200 pb-3">
+        <h3 class="text-base sm:text-lg font-black text-slate-900 flex items-center gap-2">
           <i class="fa-solid fa-book-open text-blue-600"></i>
-          <span>操作ガイド & ショートカット</span>
+          <span>操作ガイド & ご利用手引き</span>
         </h3>
-        <button onclick="closeHelpModal()" class="text-xl font-bold text-slate-400 hover:text-slate-600">✕</button>
+        <button onclick="closeHelpModal()" class="text-xl font-bold text-slate-400 hover:text-slate-600 w-8 h-8 flex items-center justify-center rounded-lg hover:bg-slate-100">✕</button>
       </div>
-      <div class="space-y-2.5 text-xs sm:text-sm text-slate-700">
-        <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">
-          <p class="font-bold text-slate-900">1. バーコードスキャン & カゴ追加</p>
-          <p class="text-xs text-slate-600 mt-0.5">画面上のどこにいても、市販のUSB/Bluetoothバーコードリーダーをかざすと自動で商品を検知してカゴに追加します。カメラによるスキャンにも対応しています。</p>
+      <div class="space-y-3 text-xs sm:text-sm text-slate-700">
+        <!-- 1. 商品の販売 & カゴ追加 -->
+        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+          <p class="font-bold text-slate-900 flex items-center gap-1.5 text-sm">
+            <i class="fa-solid fa-barcode text-blue-600"></i>
+            <span>1. 商品の登録 & カゴ追加</span>
+          </p>
+          <ul class="text-xs text-slate-600 mt-1.5 space-y-1 list-disc list-inside">
+            <li><strong>バーコードスキャン:</strong> 画面上のどこにいても、市販のUSB/Bluetoothスキャナをかざすだけで即時カゴに追加されます。ヘッダーの「カメラスキャン」ボタンから端末カメラでの読み取りも可能です。</li>
+            <li><strong>手入力販売（その他商品）:</strong> 商品棚上部の「＋ その他・手入力」ボタンから、商品名・単価・個数を直接指定してその場でカゴに追加できます。</li>
+          </ul>
         </div>
-        <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">
-          <p class="font-bold text-slate-900">2. 高速テンキー & ワンタップ金種</p>
-          <p class="text-xs text-slate-600 mt-0.5">「お支払いへ進む」から、「ぴったり」や「+1,000円」ボタン、電卓風テンキーで即座にお預かりを入力。[Enter] キーで即会計完了できます。</p>
+
+        <!-- 2. お会計・全金種ステッパー & 割引 -->
+        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+          <p class="font-bold text-slate-900 flex items-center gap-1.5 text-sm">
+            <i class="fa-solid fa-calculator text-emerald-600"></i>
+            <span>2. お会計・預かり金照合 & 割引</span>
+          </p>
+          <ul class="text-xs text-slate-600 mt-1.5 space-y-1 list-disc list-inside">
+            <li><strong>高速テンキー & ワンタップ金種:</strong> 「お支払いへ進む」から電卓風テンキーやクイック金種ボタン（+100円、+1,000円など）でお預かり金額を入力します。</li>
+            <li><strong>全金種ステッパー:</strong> 1円〜10,000円の各硬貨・紙幣の枚数ステッパーで受取金種を入力し、お預かり合計と現金を照合できます。</li>
+            <li><strong>ぴったり会計:</strong> 「ぴったり」ボタンを押すと合計額と同額が自動入力され、お釣り0円で即会計できます。</li>
+            <li><strong>割引・値引き:</strong> カゴ画面の「🏷️ 割引を設定」から、%割引（5%〜50%）または固定値引き（50円〜1,000円引き）を適用できます。</li>
+          </ul>
         </div>
-        <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">
-          <p class="font-bold text-slate-900">3. 巨大おつり表示 (タップで次客へ)</p>
-          <p class="text-xs text-slate-600 mt-0.5">会計完了時に巨大フォントでおつりを表示。おつりを渡し終えたら画面タップまたは [Enter] キーで即座にカゴをクリアして次客待機へ進みます。</p>
+
+        <!-- 3. 巨大おつり表示 -->
+        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+          <p class="font-bold text-slate-900 flex items-center gap-1.5 text-sm">
+            <i class="fa-solid fa-hand-holding-dollar text-amber-600"></i>
+            <span>3. 巨大おつり表示 & 即時リセット</span>
+          </p>
+          <ul class="text-xs text-slate-600 mt-1.5 space-y-1 list-disc list-inside">
+            <li>会計完了時に巨大フォントでお預かりとおつり金額を表示し、音声案内が流れます。</li>
+            <li>おつりを渡し終えたら、画面タップまたは [Enter] キーで即座にリセットされ、次客待機へ進みます。</li>
+          </ul>
         </div>
-        <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">
-          <p class="font-bold text-slate-900">4. 取引取消 (VOID) & 在庫自動復元</p>
-          <p class="text-xs text-slate-600 mt-0.5">売上分析画面の取引履歴から「取消」ボタンを押すと、売上・客数を減算し、販売された在庫を自動で復元します。</p>
+
+        <!-- 4. 在庫管理 & ラベル印刷 -->
+        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+          <p class="font-bold text-slate-900 flex items-center gap-1.5 text-sm">
+            <i class="fa-solid fa-boxes-stacked text-purple-600"></i>
+            <span>4. 在庫管理 & 商品貼付ラベル印刷</span>
+          </p>
+          <ul class="text-xs text-slate-600 mt-1.5 space-y-1 list-disc list-inside">
+            <li><strong>リアルタイム在庫調整:</strong> 「在庫管理」タブから「＋/－」ステッパーや数値の直接編集で瞬時に在庫数を更新できます。</li>
+            <li><strong>ラベルシート印刷:</strong> 「バーコード印刷」タブから、市販のA4ラベルシール用紙（24面 / 44面）に商品名・税込金額・バーコードのみを整然とレイアウトして印刷できます（単票POP印刷にも対応）。</li>
+          </ul>
         </div>
-        <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200">
-          <p class="font-bold text-slate-900">5. 複数端末の合算 (マージ集計) & CSV出力</p>
-          <p class="text-xs text-slate-600 mt-0.5">複数端末のJSONファイルを売上画面にドラッグ＆ドロップするだけで重複排除して一括集計。商品別・全取引明細のUTF-8 BOM付きCSVを出力できます。</p>
+
+        <!-- 5. 売上分析 & 取引取消（VOID） -->
+        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+          <p class="font-bold text-slate-900 flex items-center gap-1.5 text-sm">
+            <i class="fa-solid fa-chart-line text-blue-600"></i>
+            <span>5. 売上分析 & 取引取消 (VOID)</span>
+          </p>
+          <ul class="text-xs text-slate-600 mt-1.5 space-y-1 list-disc list-inside">
+            <li>売上総額・客数・客単価・時間帯別グラフ・商品別売上ランキングをリアルタイム可視化。</li>
+            <li>誤会計が発生した場合は、取引履歴の「取消」ボタンで売上・客数を減算し、販売された在庫を自動復元します。</li>
+          </ul>
+        </div>
+
+        <!-- 6. 複数レジ売上合算（QRコード & JSON） -->
+        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+          <p class="font-bold text-slate-900 flex items-center gap-1.5 text-sm">
+            <i class="fa-solid fa-qrcode text-emerald-600"></i>
+            <span>6. 複数レジ合算 (QRコード / JSON) & CSV出力</span>
+          </p>
+          <ul class="text-xs text-slate-600 mt-1.5 space-y-1 list-disc list-inside">
+            <li><strong>QRコード合算:</strong> 子機の売上を「売上QRコード」として表示し、親機のカメラで読み取るだけで完全オフライン合算できます。</li>
+            <li><strong>JSONファイル合算:</strong> 複数端末の売上JSONファイルをドラッグ＆ドロップするだけで重複排除して一括集計。</li>
+            <li>商品別集計・全取引明細のUTF-8 BOM付きCSVエクスポートに対応しています。</li>
+          </ul>
+        </div>
+
+        <!-- 7. PWA & オフライン対応 -->
+        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+          <p class="font-bold text-slate-900 flex items-center gap-1.5 text-sm">
+            <i class="fa-solid fa-mobile-screen-button text-indigo-600"></i>
+            <span>7. PWA (アプリ化) & 完全オフライン動作</span>
+          </p>
+          <ul class="text-xs text-slate-600 mt-1.5 space-y-1 list-disc list-inside">
+            <li>ヘッダーの「アプリ保存」ボタンやブラウザメニューからホーム画面に追加してアプリ化できます。</li>
+            <li>Service Workerにより全アセットが保存されるため、電波の届かない地下会場や野外イベントでも完全にオフラインで動作します。</li>
+          </ul>
+        </div>
+
+        <!-- 8. キーボードショートカット -->
+        <div class="p-3 bg-amber-50 rounded-xl border border-amber-200">
+          <p class="font-bold text-amber-900 flex items-center gap-1.5 text-sm">
+            <i class="fa-solid fa-keyboard text-amber-600"></i>
+            <span>8. 主なショートカットキー</span>
+          </p>
+          <div class="grid grid-cols-2 gap-2 text-xs text-amber-800 mt-1.5">
+            <p><strong>[Enter]</strong> : 会計確定 / おつり画面リセット</p>
+            <p><strong>[Esc]</strong> : 開いているモーダルを閉じる</p>
+          </div>
         </div>
       </div>
-      <button onclick="closeHelpModal()" class="pos-btn w-full py-2 bg-blue-600 hover:bg-blue-500 text-white text-xs sm:text-sm font-bold rounded-lg">
+      <button onclick="closeHelpModal()" class="pos-btn w-full py-2.5 bg-blue-600 hover:bg-blue-500 text-white text-xs sm:text-sm font-bold rounded-xl shadow-sm">
         閉じる
       </button>
     </div>
@@ -1426,6 +1504,6 @@
   <div id="label-sheet-print-container" class="hidden"></div>
 
   <!-- アプリロジック -->
-  <script src="app.js?v=18"></script>
+  <script src="app.js?v=19"></script>
 </body>
 </html>

@@ -262,7 +262,7 @@ const Sound = {
 };
 
 // =========================================================
-// 2. ナビゲーション & タブ切替（【問題①修正】他タブ全画面表示対応）
+// 2. ナビゲーション & タブ切替（他タブ全画面表示対応）
 // =========================================================
 
 /**
@@ -364,7 +364,7 @@ function generateUniqueJanBarcode() {
   let attempts = 0;
 
   do {
-    // 【問題①修正】10桁の数値をゼロ埋めで生成し、'49'(2桁)と合わせて確実に12桁にする
+    // 10桁の数値をゼロ埋めで生成し、'49'(2桁)と合わせて確実に12桁にする
     const randomBody = String(Math.floor(Math.random() * 10000000000)).padStart(10, '0');
     const digits12 = '49' + randomBody;
     const checkDigit = calculateJan13CheckDigit(digits12);
@@ -912,7 +912,7 @@ function loadSavedData() {
       };
     }
 
-    // 【問題①修復】既存データ内の不正バーコード（NaNを含む等）を自動修復
+    // 既存データ内の不正バーコード（NaNを含む等）を自動修復
     let needsRepair = false;
     if (storeData.products && Array.isArray(storeData.products)) {
       storeData.products.forEach(p => {
@@ -1368,7 +1368,7 @@ function renderCart() {
 }
 
 // =========================================================
-// 8. 高速会計モーダル & 巨大おつりUI（【問題③修正】タップ消滅式）
+// 8. 高速会計モーダル & 巨大おつりUI（タップ・Enter消滅式）
 // =========================================================
 
 function openPaymentModal() {
@@ -1628,12 +1628,12 @@ function executeCompleteSale() {
     speak(`ありがとうございました。おつりは${change}円です。`);
   }
 
-  // 【問題③修正】巨大おつりモーダルの表示（3秒タイマーなし、タップ消滅式）
+  // 巨大おつりモーダルの表示（タップ消滅式）
   showChangePopup(change, total, paymentInserted);
 }
 
 /**
- * 【問題③修正】巨大おつりポップアップ表示（自動消滅なし、タップまたはEnterで消滅）
+ * 巨大おつりポップアップ表示（タップまたはEnterで消滅）
  * @param {number} change 
  * @param {number} total 
  * @param {number} paid 

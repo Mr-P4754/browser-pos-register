@@ -60,6 +60,20 @@ npx http-server -p 8080
 - **オフライン対応**: Service Worker (Cache Storage API), Web App Manifest
 - **データ永続化**: ブラウザ LocalStorage API
 
+## 📁 プロジェクト構成
+
+```text
+.
+├── index.html        # POSレジ メイン画面・全モーダル構造
+├── style.css         # 実用モダンデザイン・印刷レイアウトスタイル
+├── app.js            # レジ会計・売上集計・在庫・カメラ・印刷ロジック
+├── manifest.json     # PWA構成定義（Web App Manifest）
+├── sw.js             # 完全オフライン動作対応 Service Worker
+├── icons/            # PWA用各解像度アプリアイコン群
+├── README.md         # プロジェクトドキュメント
+└── .gitignore        # Git除外設定
+```
+
 ---
 
 ## 📄 ライセンス
